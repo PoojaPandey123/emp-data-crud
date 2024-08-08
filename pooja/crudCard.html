@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Employee Form</title>
+    <style>
+           * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../photos/employee.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .employee {
+            width: 100%;
+            /* height: 500px; */
+            padding: 50px 10px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: 0px 6px;
+            border: 1px solid;
+            padding: 17px;
+            width: 97.5%;
+            background-color: lightsteelblue;
+        }
+
+        .form {
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            box-shadow: 5px 5px 10px #aaa;
+            width: 36%;
+
+            padding: 20px;
+            border-radius: 15px;
+            background-color:lightsteelblue;
+        }
+
+        .form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form input {
+            width: 95%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: white;
+            align-content: center;
+            /* box-sizing: border-box; */
+        }
+
+        .submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .submit button {
+            padding: 18px 60px;;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div>
+            <h1 style="font-size: 31px;">Employess Details</h1>
+        </div>
+        <div class="glass" style="    margin-top: 15px;">
+            <!-- <input type="text" placeholder="search" style=" padding: 14px; border-radius: 10px;
+    width: 275px;"> -->
+            <i onclick="window.location.href='./card.html'" class="fa-solid fa-arrow-right"
+                style="font-size: 30px;"></i>
+        </div>
+
+    </div>
+    <div class="form">
+        <form>
+            <div class="employee">
+
+
+                <label for="employeeName">Employee Name</label>
+                <input type="text" id="employeeName" name="employeeName" placeholder="Enter your name" required><br>
+
+                <label for="image">Add Photo</label>
+                <input type="file" id="photo">
+                <div id="preview" style="display: none;"><img id="photoPreview" style="width: 100px;"
+                        alt="Current Photo"><span>image preview</span></div><br>
+
+                <label for="jobRole">Job Role</label>
+                <div class="filter">
+                    <select name="position" id="jobRole" style="    padding: 10px;
+                    width: 97%;
+                    font-size: 15px;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;">
+                        <option value="">Filter By Role</option>
+                        <option value="Software Developer">Software Developer</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="Software Engineer">Software Engineer</option>
+                        <option value="Mern Stack Developr">Mern Stack Developer</option>
+                        <option value="Web Designer">Web Designer</option>
+                        <option value="Full Stack Engineer">Full stack Developer</option>
+        
+                    </select>
+                </div><br>
+
+                <label for="mobileNo">Mobile No</label>
+                <input type="number" id="mobileNo" name="mobileNo" placeholder="Enter your number" required
+                    title="Please enter a 10-digit phone number"><br>
+
+                <label for="companyName">Company Name</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Enter your company name"
+                    required><br>
+
+                <div class="submit">
+                    <button type="submit" id="sub">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script src="forms.js"></script>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+    
+    #app {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
+    
+    #item-input {
+        width: 70%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    #add-item {
+        padding: 10px 20px;
+        background: #007bff;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    #item-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+    
+    #item-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    #item-list .edit, #item-list .delete {
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    
+    #item-list .edit {
+        color: #007bff;
+    }
+    
+    #item-list .delete {
+        color: #dc3545;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>CRUD Operations</h1>
+        <input type="text" id="item-input" placeholder="Enter item">
+        <button id="add-item">Add Item</button>
+        <ul id="item-list"></ul>
+    </div>
+    <script >document.addEventListener('DOMContentLoaded', () => {
+        const itemInput = document.getElementById('item-input');
+        const addItemButton = document.getElementById('add-item');
+        const itemList = document.getElementById('item-list');
+    
+        loadItems();
+    
+        addItemButton.addEventListener('click', addItem);
+    
+        function addItem() {
+            const itemText = itemInput.value.trim();
+            if (itemText === '') {
+                alert('Please enter an item.');
+                return;
+            }
+    
+            const item = { id: Date.now(), text: itemText };
+            let items = getItemsFromLocalStorage();
+            items.push(item);
+            setItemsToLocalStorage(items);
+            addItemToDOM(item);
+    
+            itemInput.value = '';
+        }
+    
+        function addItemToDOM(item) {
+            const listItem = document.createElement('li');
+            listItem.dataset.id = item.id;
+    
+            const itemContent = document.createElement('span');
+            itemContent.textContent = item.text;
+            listItem.appendChild(itemContent);
+    
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.className = 'edit';
+            editButton.addEventListener('click', () => editItem(listItem));
+            listItem.appendChild(editButton);
+    
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete';
+            deleteButton.addEventListener('click', () => deleteItem(listItem));
+            listItem.appendChild(deleteButton);
+    
+            itemList.appendChild(listItem);
+        }
+    
+        function editItem(listItem) {
+            const itemText = listItem.querySelector('span').textContent;
+            const newItemText = prompt('Edit the item:', itemText);
+            if (newItemText !== null) {
+                listItem.querySelector('span').textContent = newItemText.trim();
+    
+                const itemId = listItem.dataset.id;
+                let items = getItemsFromLocalStorage();
+                items = items.map(item => item.id === Number(itemId) ? { ...item, text: newItemText } : item);
+                setItemsToLocalStorage(items);
+            }
+        }
+    
+        function deleteItem(listItem) {
+            const itemId = listItem.dataset.id;
+            let items = getItemsFromLocalStorage();
+            items = items.filter(item => item.id !== Number(itemId));
+            setItemsToLocalStorage(items);
+    
+            itemList.removeChild(listItem);
+        }
+    
+        function getItemsFromLocalStorage() {
+            return JSON.parse(localStorage.getItem('items')) || [];
+        }
+    
+        function setItemsToLocalStorage(items) {
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+    
+        function loadItems() {
+            const items = getItemsFromLocalStorage();
+            items.forEach(addItemToDOM);
+        }
+    });
+    </script>
+</body>
+</html>

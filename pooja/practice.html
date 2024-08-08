@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .pick {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            margin: 50px 50px;
+        }
+
+        .section {
+            border: 1px solid black;
+            box-shadow: 5px 5px whitesmoke;
+            width: 300px;
+            padding: 16px;
+           
+            text-align: center;
+        }
+
+        .section img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .headline {
+            font-size: 1.5em;
+            margin: 8px 0;
+        }
+
+        .roles,
+        .numbers,
+        .details {
+            font-size: 1em;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pick">
+
+    </div>
+
+    <script>
+
+        let cards = [
+            {
+                images: "./1721044292468.jpeg",
+                name: "Pooja Pandey",
+                jobrole: "Web Developer",
+                mobileno: "7452653489",
+                detail: "Uttaranchal University",
+            },
+            {
+                images: "./1721044292468.jpeg",
+                name: "Aman Pant",
+                jobrole: "Mern Stack Developer",
+                mobileno: "7452653481",
+                detail: "Quantum University",
+            },
+            {
+                images: "./1721044292468.jpeg",
+                name: "Divyam Rautham",
+                jobrole: "Mern Stack Developer",
+                mobileno: "7452653471",
+                detail: "Graphic Era Hill University",
+            },
+            {
+                images: "./1721044292468.jpeg",
+                name: "Priya Aggarwal",
+                jobrole: "Software Developer",
+                mobileno: "7452653451",
+                detail: "PSIT University",
+            },
+            
+           
+        ];
+
+
+        function renderCards(cards) {
+
+            let context = document.querySelector(".pick");
+            context.innerHTML = "";
+
+            // Iterate over each card object in the array
+            cards.forEach(card => {
+                // Create a new div element for the card
+                let classStore = document.createElement("div");
+                classStore.className = "section";
+                classStore.innerHTML = `
+                    <div class="image"><img class="mobile" src="${card.images}" alt="${card.name}"></div>
+                    <h2 class="headline">${card.name}</h2>
+                    <p class="roles">${card.jobrole}</p>
+                    <p class="numbers">${card.mobileno}</p>
+                    <p class="details">${card.detail}</p>
+                `;
+
+                // Append the card to the container
+                context.appendChild(classStore);
+            });
+        }
+
+        // Call the function 
+        renderCards(cards);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../photos/employee.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            border: 1px solid;
+            padding: 15px;
+            /* margin: 20px 20px; */
+            width: 97.5%;
+            background-color: lightsteelblue;
+        }
+
+        .employee-detail {
+            display: grid;
+
+            justify-content: space-around;
+            gap: 10px;
+            row-gap: 30px;
+            margin: 100px;
+            grid-template-columns: repeat(4, 18%);
+
+        }
+
+        .mobile {
+            width: 100%;
+            height: 410px;
+            object-fit: cover;
+            /* border-radius: 50%; */
+            padding: 17px;
+            text-align: center;
+            line-height: 2;
+            border: 1px solid black;
+            box-shadow: 5px 5px 5px;
+            background-color: #ffffffd9;
+        }
+
+        .mobile img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .employee-detail h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .add {
+            padding: 13px;
+            font-size: 20px;
+            background-color: #007bff;
+            color: black;
+        }
+
+        .employee-detail p {
+            margin: 5px 0;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .glass {
+            position: relative;
+        }
+
+        .editing {
+            margin-top: 15px;
+        }
+
+        .editing button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .editing button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <div>
+            <button class="add" onclick="window.location.href='./crudCard.html'"> <i class="fa-solid fa-plus"></i></a>Add
+                Employee</button>
+        </div>
+        <div class="filter">
+            <select name="position" id="category" style="padding: 14px;    width: 250px;    font-size: 20px;">
+                <option value="">Filter By Role</option>
+                <option value="Software Developer">Software Developer</option>
+                <option value="Web Developer">Web Developer</option>
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Mern Stack Developr">Mern Stack Developer</option>
+                <option value="Web Designer">Web Designer</option>
+                <option value="Full Stack Engineer">Full stack Developer</option>
+
+            </select>
+        </div>
+        <div class="glass ">
+            <input type="text"  id="search" placeholder="search" style=" padding: 14px; border-radius: 10px;
+    width: 275px;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute;right: 0px; padding: 15px;"></i>
+            <div class="bar"></div>
+        </div>
+
+    </div>
+
+    <div class="employee-detail">
+
+        <!-- Employee details will be inserted here by JavaScript -->
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>
+
+<script src="formcard.js"></script>
